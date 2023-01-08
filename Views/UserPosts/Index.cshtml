@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication1.Models.UserPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Muro</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:15%">
+                @Html.DisplayNameFor(model => model.PostUser)
+            </th>
+            <th style="width:60%; max-width:1px; text-overflow:ellipsis">
+                @Html.DisplayNameFor(model => model.PostContents)
+            </th>
+            <th style="width:15%">
+                @Html.DisplayNameFor(model => model.PostTime)
+            </th>
+            <th style="width:10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="width:15%">
+                @Html.DisplayFor(modelItem => item.PostUser)
+            </td>
+            <td style="width:60%" class="overflow-hidden text-break">
+                @Html.DisplayFor(modelItem => item.PostContents)
+            </td>
+            <td style="width:15%">
+                @Html.DisplayFor(modelItem => item.PostTime)
+            </td>
+            <td style="width:10%">
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
